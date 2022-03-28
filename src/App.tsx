@@ -1,14 +1,34 @@
-import './App.css';
-import { Practice1 } from './practices/Practice1';
-import { Practice2 } from './practices/Practice2';
-import { Practice3 } from './practices/Practice3';
+import axios from "axios";
+import { useState } from "react";
+import { toEditorSettings } from "typescript";
+import "./App.css";
+import { Todo } from "./Todo";
+
+type TodoType = {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+};
+// typeは基本、最初は大文字で設定
 
 function App() {
+  const [todos, setTodos] = useState<Array<TodoType>>([]);
+  // useStateでの型指定
+
+  const onClickFetchData = () => {
+    axios.get<Array<TodoType>>("https://jsonplaceholder.typicode.com/todos").then((res) => {
+      setTodos(res.data);
+      // setTodosにデータが入ることでtodosも更新される
+    });
+  };
+
   return (
     <div className="App">
-     <Practice1/>
-     <Practice2/>
-     <Practice3/>
+      <button onClick={onClickFetchData}>データ取得</button>
+      {todos.map((todo) => (
+        <Todo title={todo.title} userid={todo.userId} />
+      ))}
     </div>
   );
 }
