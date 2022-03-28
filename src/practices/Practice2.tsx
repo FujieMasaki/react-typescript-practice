@@ -12,7 +12,7 @@ export const Practice2 = () =>{
     return(
         <div>
             <p>練習問題2:返却値型の指定</p>
-            <button onClick={onClickPractice}>練習問題2スタート</button>
+            <button onClick={onClickPractice}>練習問題2を実行</button>
         </div>
     )
 }
