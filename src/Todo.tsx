@@ -1,8 +1,8 @@
+import { VFC } from "react";
 import { TodoType } from "./types/todos";
 
-export const Todo = (
-props: Omit<TodoType, "id">
-) => {
+export const Todo: VFC<Omit<TodoType, "id">> =
+(props) => {
   const { title, userId, completed = false } = props;
 //   typeを?にするときは初期値を設定
   const completedMark = completed ? "[完]" : "[未]";
