@@ -3,14 +3,9 @@ import { useState } from "react";
 import { toEditorSettings } from "typescript";
 import "./App.css";
 import { Todo } from "./Todo";
+import { TodoType } from './types/todos';
 
-type TodoType = {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-};
-// typeは基本、最初は大文字で設定
+
 
 function App() {
   const [todos, setTodos] = useState<Array<TodoType>>([]);

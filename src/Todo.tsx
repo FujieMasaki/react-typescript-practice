@@ -1,11 +1,8 @@
-type TodoType = {
-  userId: number;
-  title: string;
-  completed?: boolean;
-//   あってもなくても良いpropsは?をつける
-};
+import { TodoType } from "./types/todos";
 
-export const Todo = (props: TodoType) => {
+export const Todo = (
+props: Omit<TodoType, "id">
+) => {
   const { title, userId, completed = false } = props;
 //   typeを?にするときは初期値を設定
   const completedMark = completed ? "[完]" : "[未]";
